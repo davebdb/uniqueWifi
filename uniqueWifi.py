@@ -20,6 +20,8 @@ def main():
     print(formattedLastMonth)
 
     # using the data from last month, find the number of wireless devices and set the value of output to that value and convert it to a string 
+    # format below
+    # MMM  DD hh:mm:ss serverName dhcpd[#####]: IP: ipAddr %%% HW: macAddressColonDelim %%% RELAY: routerIP %%% INTERFACE: interfaceID %%% HOSTNAME: hostname %%% VENDOR: operatingSystemID
     output = check_output("/bin/grep \"IP: 10\.6\.\" /home/rsyslog/dhcp*-" + str(formattedLastMonth) + "*.log | /usr/bin/awk \'{print $10}\' | /usr/bin/sort -u | /usr/bin/wc -l", shell=True)
     output = str(output,'utf-8')
     print(output)
